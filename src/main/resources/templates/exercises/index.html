@@ -3,9 +3,28 @@
 <head th:replace="fragments :: head"></head>
 <body class="container body-content">
 
+<h1>Add Exercise</h1>
+
 <nav th:replace="fragments :: page-header"></nav>
 
-<h1>Add Exercise</h1>
+<form method="post" style="max-width:200px;">
+    <div class="form-group">
+        <input class="form-control" th:field="${exercise.name}" />
+        <div th:errors="${exercise.name}" class="error"></div>
+    </div>
+    <input type="submit" value="Add" />
+</form>
+
+<h2>List of Exercises</h2>
+
+<table class="table">
+    <tr>
+        <td>
+            <li th:each="exercise : ${exercises}" th:text="${exercise.name}">
+            </li>
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>

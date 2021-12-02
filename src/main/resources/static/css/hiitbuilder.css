@@ -1,0 +1,11 @@
+.body-content {
+    margin-top: 75px;
+}
+
+td, th {
+    padding: 10px;
+}
+
+.error {
+    color: #FF0000;
+}
