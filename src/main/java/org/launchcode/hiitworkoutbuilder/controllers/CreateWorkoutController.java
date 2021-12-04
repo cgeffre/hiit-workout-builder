@@ -34,6 +34,7 @@ public class CreateWorkoutController {
     @PostMapping("create")
     public String processCreateWorkout (@ModelAttribute @Valid Workout newWorkout, Errors errors, Model model) {
         if (errors.hasErrors()) {
+            model.addAttribute("exercises", exerciseRepository.findAll());
             return "create/index";
         }
 

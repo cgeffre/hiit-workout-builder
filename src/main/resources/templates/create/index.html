@@ -12,7 +12,7 @@
 will be 30-60 seconds per exercise and will take 15-30 minutes to complete.
 the exercises you select will be randomized during the workout.</p>
 
-<form method="post" style="max-width:300px;">
+<form method="post" style="max-width:300px;" name="createWorkout">
 
     <div class="form-group">
         <label th:for="name">Workout Name</label>
@@ -22,8 +22,9 @@ the exercises you select will be randomized during the workout.</p>
 
     <div class="form-group">
         <label th:for="secondsDuration">Seconds for Each Exercise</label>
-        <input class="form-control" input type="number" step="5" min="5" th:field="${workout.secondsDuration}" />
+        <input id="duration" class="form-control" input type="number" step="5" min="5" th:field="${workout.secondsDuration}" />
         <div th:errors="${workout.secondsDuration}" class="error"></div>
+        <p id="numError" class="error"></p>
     </div>
 
     <div>
@@ -36,7 +37,7 @@ the exercises you select will be randomized during the workout.</p>
         </list>
     </div>
 
-    <input type="submit" value="Create" />
+    <input type="submit" id="create" class="btn-success" value="Create" onclick="validateNumber();" />
 </form>
 
 </body>
