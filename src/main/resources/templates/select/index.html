@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<h1>Select Workout</h1>
+
+<p>Choose which workout you would like to do, review, edit, or delete.</p>
+
+<div>
+    <list>
+        <ul th:each="workout : ${workouts}">
+            <a th:href="@{/select/view/{id}(id=${workout.id})}" th:text="${workout.name}"></a>
+        </ul>
+    </list>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<h1 th:text="${workout.name}"></h1>
+<p th:text="'Time for each exercise in workout: ' + ${workout.secondsDuration} + ' seconds'"></p>
+
+<p>Exercises:</p>
+
+<div>
+    <list>
+        <ul th:each="exercise : ${exercises}" th:text="${exercise.name}"/>
+        </ul>
+    </list>
+</div>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
+// validates that an empty value is not entered into create exercise form
 function validateNumber() {
     let text;
     if (document.createWorkout.secondsDuration.value === "") {
