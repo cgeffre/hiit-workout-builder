@@ -7,9 +7,9 @@
 
 <h1>Select Workout</h1>
 
-<p>Choose which workout you would like to do, review, edit, or delete.</p>
+<p>Choose which workout you would like to view and begin.</p>
 
-<div>
+<div class="workoutSelect">
     <list>
         <ul th:each="workout : ${workouts}">
             <a th:href="@{/select/view/{id}(id=${workout.id})}" th:text="${workout.name}"></a>

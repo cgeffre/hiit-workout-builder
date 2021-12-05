@@ -13,3 +13,7 @@ td, th {
 .error {
     color: #FF0000;
 }
+
+.workoutSelect {
+    font-weight: bold;
+}

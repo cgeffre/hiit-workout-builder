@@ -39,7 +39,8 @@ public class CreateWorkoutController {
         }
 
         workoutRepository.save(newWorkout);
-            return "redirect:";
+        model.addAttribute("workouts", workoutRepository.findAll());
+        return "select/index";
     }
 
 }
