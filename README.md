@@ -22,4 +22,4 @@ You should now able to run the application from your IDE and access it on your l
 
 TECHNICAL INFORMATION
 
-This is a Spring Boot web application with Gradle handling the build. It is primarily coded in Java along with some JavaScript functions handling certain features. The application uses Thymeleaf, HTML5, and CSS on the frontend.
+This is a Spring Boot web application with Gradle handling the build. It is primarily coded in Java along with JavaScript functions handling certain features. The application uses Thymeleaf, HTML5, and CSS on the frontend.
