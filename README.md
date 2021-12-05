@@ -2,10 +2,12 @@
 
 
 ABOUT
+
 This application allows you to create and be led through customized high-intensityh interval training sessions. The application is under active development and new features are being added regularly. Please read below for information on setting up and running the application as well as technical details.
 
 
 SETUP
+
 Set your IDE to compile the application using Java Development Kit (JDK) 11. You may need to have Gradle installed if you are not compiling the application from IntelliJ IDEA or Spring Tool Suite. Fork and clone the Git repository to your IDE and then set up a local MySQL server. The server and schema settings should be configured in MySQL Workbench to:
 - Port: 3306
 - Title: hiit-workout-builder
@@ -19,4 +21,5 @@ You should now able to run the application from your IDE and access it on your l
 
 
 TECHNICAL INFORMATION
+
 This is a Spring Boot web application with Gradle handling the build. It is primarily coded in Java along with some JavaScript functions handling certain features. The application uses Thymeleaf, HTML5, and CSS on the frontend.
