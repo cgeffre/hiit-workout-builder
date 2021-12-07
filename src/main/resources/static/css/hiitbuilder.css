@@ -17,3 +17,7 @@ td, th {
 .workoutSelect {
     font-weight: bold;
 }
+
+.workoutDisplay {
+    text-align: center;
+}
