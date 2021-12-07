@@ -7,6 +7,8 @@
 
 <div class="workoutDisplay">
 <h1 th:text="${workout.name}"></h1>
+    <h2 th:each="exercise : ${exercises}" th:text="${exercise.name}"/>
+</div>
 
 </div>
 

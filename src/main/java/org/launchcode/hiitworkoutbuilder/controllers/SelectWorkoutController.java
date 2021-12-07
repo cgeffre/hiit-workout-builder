@@ -1,7 +1,7 @@
 package org.launchcode.hiitworkoutbuilder.controllers;
 
+import org.launchcode.hiitworkoutbuilder.models.Exercise;
 import org.launchcode.hiitworkoutbuilder.models.Workout;
-import org.launchcode.hiitworkoutbuilder.models.data.ExerciseRepository;
 import org.launchcode.hiitworkoutbuilder.models.data.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 @Controller
 @RequestMapping("select")
@@ -36,7 +37,9 @@ public class SelectWorkoutController {
     @GetMapping("workout/{workoutId}")
     public String doWorkout(Model model, @PathVariable int workoutId) {
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
+        ArrayList<Exercise> exercises = workout.exerciseRandomizer(workout);
         model.addAttribute("workout", workout);
+        model.addAttribute("exercises", exercises);
         return "select/workout";
     }
 }

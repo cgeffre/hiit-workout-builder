@@ -5,6 +5,7 @@ import javax.persistence.ManyToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -23,6 +24,13 @@ public class Workout extends AbstractEntity {
         super();
         this.exercises = someExercises;
         this.secondsDuration = someDuration;
+    }
+
+    public ArrayList<Exercise> exerciseRandomizer(Workout aWorkout) {
+        ArrayList<Exercise> exercises = new ArrayList<>();
+        exercises.addAll(aWorkout.getExercises());
+        Collections.shuffle(exercises);
+        return exercises;
     }
 
     public List<Exercise> getExercises() {
