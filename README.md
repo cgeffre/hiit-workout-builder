@@ -3,7 +3,7 @@
 
 ABOUT
 
-This application allows you to create and be led through customized high-intensityh interval training (HIIT) sessions. The application is under active development and new features are being added regularly. Please read below for information on setting up and running the application as well as technical details.
+This application allows you to create and be led through customized high-intensity interval training (HIIT) sessions. The application is under active development and new features are being added regularly. Please read below for information on setting up and running the application as well as technical details.
 
 
 SETUP
@@ -22,4 +22,4 @@ You should now able to run the application from your IDE and access it on your l
 
 TECHNICAL INFORMATION
 
-This is a Spring Boot web application with Gradle handling the build. It is primarily coded in Java along with JavaScript functions handling certain features. The application uses Thymeleaf, HTML5, and CSS on the frontend.
+This is a Spring Boot web application with Gradle handling the build. It is primarily coded in Java along with JavaScript functions handling certain features. The application uses Thymeleaf, HTML5, and CSS on the frontend and SQL with Hibernate to implement a persistent database.
