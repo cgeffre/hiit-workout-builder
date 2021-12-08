@@ -11,16 +11,27 @@ function validateNumber() {
 }
 
 // timer for workouts
-function countdownTimer(duration, display) {
+function countdownTimer(duration, display, exerciseNumber) {
     let timer = duration;
+    let endMessage = "Workout Complete!"
+    let i = 0;
+
     setInterval(function () {
         seconds = parseInt(timer % 60, 10);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = seconds;
 
         if (--timer < 0) {
+            i++;
             timer = duration;
         }
+
+        if (i === exerciseNumber) {
+            display.textContent = "Workout Complete!";
+            clearInterval(timer);
+        }
+
+        console.log(i);
 
     }, 1000);
 }
