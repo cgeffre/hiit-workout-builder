@@ -2,12 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container body-content">
+<script th:inline="javascript">
+    window.onload = function () {
+    let time = /*[[${workout.secondsDuration}]]*/;
+    let display = document.querySelector('#timer');
+    countdownTimer(time, display);
+};
+</script>
 
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="workoutDisplay">
 <h1 th:text="${workout.name}"></h1>
     <h2 th:each="exercise : ${exercises}" th:text="${exercise.name}"/>
+    <h2 id="timer"/>
 </div>
 
 </div>

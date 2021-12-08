@@ -4,9 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Workout extends AbstractEntity {
