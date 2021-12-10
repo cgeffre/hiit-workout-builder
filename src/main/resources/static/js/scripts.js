@@ -13,25 +13,31 @@ function validateNumber() {
 // timer for workouts
 function countdownTimer(duration, display, exerciseNumber) {
     let timer = duration;
-    let endMessage = "Workout Complete!"
-    let i = 0;
+    let counter = 0;
+    document.getElementById(counter).hidden = false;
 
     setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
+        seconds = parseInt(timer % 100, 10);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = seconds;
 
+        if (counter === exerciseNumber) {
+            clearInterval(timer);
+            document.getElementById(counter-1).hidden = true;
+            return display.textContent = "Workout Complete!";
+        }
+
         if (--timer < 0) {
-            i++;
+            counter++;
             timer = duration;
         }
 
-        if (i === exerciseNumber) {
-            display.textContent = "Workout Complete!";
-            clearInterval(timer);
+        if (timer === duration) {
+            if (counter < exerciseNumber) {
+                document.getElementById(counter-1).hidden = true;
+                document.getElementById(counter).hidden = false;
+            }
         }
-
-        console.log(i);
 
     }, 1000);
 }
