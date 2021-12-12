@@ -8,7 +8,7 @@ This application allows you to create and be led through customized high-intensi
 
 SETUP
 
-Set your IDE to compile the application using Java Development Kit (JDK) 11. You may need to have Gradle installed if you are not compiling the application from IntelliJ IDEA or Spring Tool Suite. Fork and clone the Git repository to your IDE and then set up a local MySQL server. The server and schema settings should be configured in MySQL Workbench to:
+Set your IDE to compile the application using Java Development Kit (JDK) 11. You may need to have Gradle installed if you are not compiling the application from IntelliJ IDEA or Spring Tool Suite. Fork and clone the Git repository to your IDE and then set up a local MySQL server. The server, schema, and user settings should be configured in MySQL Workbench to:
 - Port: 3306
 - Title: hiit-workout-builder
 - Username: hiit-workout-builder
@@ -22,4 +22,4 @@ You should now able to run the application from your IDE and access it on your l
 
 TECHNICAL INFORMATION
 
-This is a Spring Boot web application with Gradle handling the build. It is primarily coded in Java along with JavaScript functions handling certain features. The application uses Thymeleaf, HTML5, and CSS on the frontend and SQL with Hibernate to implement a persistent database.
+This is a Spring Boot web application with Gradle handling the build. It is primarily coded in Java with JavaScript functions handling certain features and the application follows a Model-View-Controller design pattern. The application uses Thymeleaf, HTML5, and CSS on the frontend and SQL with Hibernate to implement a persistent database.
