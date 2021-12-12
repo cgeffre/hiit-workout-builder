@@ -38,17 +38,7 @@ public class SelectWorkoutController {
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
         ArrayList<Exercise> exerciseList = workout.exerciseRandomizer(workout);
         ArrayList<Exercise> exercises = new ArrayList<>();
-
-        for (int i = 0; i < exerciseList.size(); i++) {
-            if ((i > 0) && (i % workout.getRestInterval() == 0) && (i < exerciseList.size())) {
-                Exercise rest = new Exercise();
-                rest.setName("Rest");
-                exercises.add(rest);
-            }
-            exercises.add(exerciseList.get(i));
-        }
-
-        System.out.println(exercises);
+        workout.addRestsToWorkout(exerciseList, workout, exercises);
 
         model.addAttribute("workout", workout);
         model.addAttribute("exercises", exercises);

@@ -37,6 +37,18 @@ public class Workout extends AbstractEntity {
         return exercises;
     }
 
+    public ArrayList<Exercise> addRestsToWorkout(ArrayList<Exercise> exerciseList, Workout workout, ArrayList<Exercise> exercises) {
+        for (int i = 0; i < exerciseList.size(); i++) {
+            if ((i > 0) && (i % workout.getRestInterval() == 0) && (i < exerciseList.size())) {
+                Exercise rest = new Exercise();
+                rest.setName("Rest");
+                exercises.add(rest);
+            }
+            exercises.add(exerciseList.get(i));
+        }
+        return exercises;
+    }
+
     public List<Exercise> getExercises() {
         return exercises;
     }
