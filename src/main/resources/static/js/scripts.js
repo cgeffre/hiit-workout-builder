@@ -10,11 +10,11 @@ function validateNumbers() {
     return true;
 }
 
-// validates that empty string values are not entered on edit exercise form
+// validates length of string values for edit exercise form
 function validateString() {
     let text;
-    if (document.editExercise.name.value === "") {
-        text = "Name is required";
+    if (document.editExercise.name.value === "" || document.editExercise.name.value.length > 50) {
+        text = "Name must be between 1 and 50 characters";
         document.getElementById("stringError").innerHTML = text;
         event.preventDefault();
         return false;

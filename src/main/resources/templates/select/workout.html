@@ -15,8 +15,8 @@
 
 <div class="workoutDisplay">
 <h1 th:text="${workout.name}"></h1>
-    <h2 hidden th:each="exercise : ${exercises}" th:id="${exercises.indexOf(exercise)}" th:text="${exercise.name}"/>
-    <h2 id="timer" class="timer"/>
+    <p hidden th:each="exercise : ${exercises}" th:id="${exercises.indexOf(exercise)}" th:text="${exercise.name}"/>
+    <p id="timer" class="timer"/>
 </div>
 
 </div>
