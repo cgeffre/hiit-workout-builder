@@ -14,6 +14,10 @@ td, th {
     color: #FF0000;
 }
 
+.numError {
+    color: #FF0000;
+}
+
 .workoutSelect {
     font-weight: bold;
 }

@@ -1,8 +1,8 @@
-// validates that an empty value is not entered into create exercise form
-function validateNumber() {
+// validates that empty values are not entered for numeric fields when creating a workout
+function validateNumbers() {
     let text;
-    if (document.createWorkout.secondsDuration.value === "") {
-        text = "Enter a number"
+    if ((document.createWorkout.secondsDuration.value === "") || (document.createWorkout.secondsRest.value === "") || (document.createWorkout.restInterval.value === "")) {
+        text = "Enter a number for all numeric fields"
         document.getElementById("numError").innerHTML = text;
         event.preventDefault();
         return false;

@@ -36,7 +36,20 @@ public class SelectWorkoutController {
     @GetMapping("workout/{workoutId}")
     public String doWorkout(Model model, @PathVariable int workoutId) {
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
-        ArrayList<Exercise> exercises = workout.exerciseRandomizer(workout);
+        ArrayList<Exercise> exerciseList = workout.exerciseRandomizer(workout);
+        ArrayList<Exercise> exercises = new ArrayList<>();
+
+        for (int i = 0; i < exerciseList.size(); i++) {
+            if ((i > 0) && (i % workout.getRestInterval() == 0) && (i < exerciseList.size())) {
+                Exercise rest = new Exercise();
+                rest.setName("Rest");
+                exercises.add(rest);
+            }
+            exercises.add(exerciseList.get(i));
+        }
+
+        System.out.println(exercises);
+
         model.addAttribute("workout", workout);
         model.addAttribute("exercises", exercises);
         return "select/workout";

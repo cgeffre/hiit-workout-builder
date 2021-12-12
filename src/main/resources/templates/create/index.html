@@ -7,10 +7,9 @@
 
 <h1>Create Workout</h1>
 
-<p>Enter the name of your workout and number of seconds for each exercise, and then
-    select the exercises you would like to add to your workout. Typically, HIIT sessions
-    will be 30-60 seconds per exercise and will take 15-30 minutes in total to complete.
-    The exercises you select will be randomized during the workout.</p>
+<p>Enter information about your workout including the name, duration of each exercise
+    (typically 30-60 seconds), how often you would like to rest. Next, select the exercises you
+    would like to include. The exercises will be randomized during the workout.</p>
 
 <form method="post" style="max-width:300px;" name="createWorkout">
 
@@ -24,7 +23,16 @@
         <label th:for="secondsDuration">Seconds for Each Exercise</label>
         <input id="duration" class="form-control" input type="number" step="5" min="5" th:field="${workout.secondsDuration}" />
         <div th:errors="${workout.secondsDuration}" class="error"></div>
-        <p id="numError" class="error"></p>
+    </div>
+
+    <div class="form-group">
+        <label th:for="restInterval">Exercises Between Each Rest Period</label>
+        <input id="restPeriods" class="form-control" input type="number" step="1" min="0" th:field="${workout.restInterval}" />
+        <div th:errors="${workout.restInterval}" class="error"></div>
+    </div>
+
+    <div>
+        <p id="numError" class="error"/>
     </div>
 
     <div>
@@ -37,7 +45,7 @@
         </list>
     </div>
 
-    <input type="submit" class="btn btn-primary" id="create" value="Create" onclick="validateNumber();" />
+    <input type="submit" class="btn btn-primary" id="create" value="Create" onclick="validateNumbers();" />
 </form>
 
 </body>

@@ -18,12 +18,16 @@ public class Workout extends AbstractEntity {
     @Max(value=99, message="Number must be less than 100 seconds")
     private int secondsDuration;
 
+    @Min(value=0, message="Number must be zero or greater")
+    private int restInterval;
+
     public Workout() {}
 
-    public Workout(List someExercises, int someDuration) {
+    public Workout(List someExercises, int someDuration, int someInterval) {
         super();
         this.exercises = someExercises;
         this.secondsDuration = someDuration;
+        this.restInterval = someInterval;
     }
 
     public ArrayList<Exercise> exerciseRandomizer(Workout aWorkout) {
@@ -47,6 +51,14 @@ public class Workout extends AbstractEntity {
 
     public void setSecondsDuration(int secondsDuration) {
         this.secondsDuration = secondsDuration;
+    }
+
+    public int getRestInterval() {
+        return restInterval;
+    }
+
+    public void setRestInterval(int restInterval) {
+        this.restInterval = restInterval;
     }
 
 }
