@@ -39,7 +39,6 @@ public class SelectWorkoutController {
         ArrayList<Exercise> exerciseList = workout.exerciseRandomizer(workout);
         ArrayList<Exercise> exercises = new ArrayList<>();
         workout.addRestsToWorkout(exerciseList, workout, exercises);
-
         model.addAttribute("workout", workout);
         model.addAttribute("exercises", exercises);
         return "select/workout";

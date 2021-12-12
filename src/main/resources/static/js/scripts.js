@@ -1,7 +1,7 @@
 // validates that empty values are not entered for numeric fields when creating a workout
 function validateNumbers() {
     let text;
-    if ((document.createWorkout.secondsDuration.value === "") || (document.createWorkout.secondsRest.value === "") || (document.createWorkout.restInterval.value === "")) {
+    if ((document.createWorkout.secondsDuration.value === "") || (document.createWorkout.restInterval.value === "")) {
         text = "Enter a number for all numeric fields"
         document.getElementById("numError").innerHTML = text;
         event.preventDefault();
@@ -10,7 +10,19 @@ function validateNumbers() {
     return true;
 }
 
-// timer for workouts
+// validates that empty string values are not entered on edit exercise form
+function validateString() {
+    let text;
+    if (document.editExercise.name.value === "") {
+        text = "Name is required";
+        document.getElementById("stringError").innerHTML = text;
+        event.preventDefault();
+        return false;
+    }
+    return true;
+}
+
+// timer for workouts; iterates through list of exercises
 function countdownTimer(duration, display, exerciseNumber) {
     let timer = duration;
     let counter = 0;
