@@ -21,6 +21,7 @@
     <tr th:each="exercise : ${exercises}">
         <td  th:text="${exercise.name}"/>
         <td><a th:href="@{/exercises/edit/{id}(id=${exercise.id})}" th:text="Edit"/></td>
+        <td><a th:href="@{/exercises/delete/{id}(id=${exercise.id})}" th:text="Delete"/></td>
     </tr>
 </table>
 

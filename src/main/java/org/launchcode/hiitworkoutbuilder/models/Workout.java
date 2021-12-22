@@ -1,7 +1,6 @@
 package org.launchcode.hiitworkoutbuilder.models;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -12,7 +11,7 @@ public class Workout extends AbstractEntity {
 
     @ManyToMany
     @Valid
-    private List<Exercise> exercises = new ArrayList<>();
+    private List<Exercise> exercises;
 
     @Min(value=1, message="Number must be positive")
     @Max(value=99, message="Number must be less than 100 seconds")

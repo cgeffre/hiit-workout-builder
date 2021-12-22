@@ -3,13 +3,14 @@ package org.launchcode.hiitworkoutbuilder.controllers;
 import org.launchcode.hiitworkoutbuilder.models.Exercise;
 import org.launchcode.hiitworkoutbuilder.models.data.ExerciseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
+import javax.websocket.server.PathParam;
 
 @Controller
 @RequestMapping("exercises")
@@ -56,7 +57,20 @@ public class ExerciseController {
         exercise.setName(updateExercise.getName());
         exerciseRepository.save(exercise);
         model.addAttribute("exercises", exerciseRepository.findAll());
-        return "redirect:../";
+        return "redirect:..";
     }
 
+    @GetMapping("delete/{exerciseId}")
+    public String deleteExercise(Model model, @PathVariable int exerciseId) {
+        Exercise exercise = exerciseRepository.findById(exerciseId).orElse(new Exercise());
+        model.addAttribute("exercise", exercise);
+        return "exercises/delete";
+    }
+
+    @PostMapping("delete/{exerciseId}")
+    public String processDeleteExercise(@PathVariable int exerciseId) {
+        Exercise exercise = exerciseRepository.findById(exerciseId).orElse(new Exercise());
+        exerciseRepository.delete(exercise);
+        return "redirect:..";
+    }
 }
