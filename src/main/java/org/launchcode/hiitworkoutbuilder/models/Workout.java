@@ -11,7 +11,7 @@ public class Workout extends AbstractEntity {
 
     @ManyToMany
     @Valid
-    private List<Exercise> exercises;
+    private Set<Exercise> exercises = new HashSet<>();
 
     @Min(value=1, message="Number must be positive")
     @Max(value=99, message="Number must be less than 100 seconds")
@@ -22,7 +22,7 @@ public class Workout extends AbstractEntity {
 
     public Workout() {}
 
-    public Workout(List someExercises, int someDuration, int someInterval) {
+    public Workout(Set someExercises, int someDuration, int someInterval) {
         super();
         this.exercises = someExercises;
         this.secondsDuration = someDuration;
@@ -48,11 +48,11 @@ public class Workout extends AbstractEntity {
         return exercises;
     }
 
-    public List<Exercise> getExercises() {
+    public Set<Exercise> getExercises() {
         return exercises;
     }
 
-    public void setExercises(List<Exercise> exercises) {
+    public void setExercises(Set<Exercise> exercises) {
         this.exercises = exercises;
     }
 

@@ -7,8 +7,8 @@
 
 <h1 th:text="'Delete ' + ${exercise.name}"/>
 
-<p>Deleting this exercise will remove it from any workouts that it has been added to.
-Are you sure you want to delete the exercise?</p>
+<p>Deleting this exercise will remove it from all workouts.
+Are you sure you want to delete this exercise?</p>
 
 <form class="form-group" th:method="delete">
     <input class="btn btn-primary" type="submit" value="Delete"/>
