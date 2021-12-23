@@ -48,6 +48,12 @@ public class Workout extends AbstractEntity {
         return exercises;
     }
 
+    public int totalDurationOfWorkout(ArrayList<Exercise> exercises, Workout aWorkout) {
+        int numberOfExercises = exercises.size();
+        int secondsDuration = aWorkout.getSecondsDuration();
+        return Math.round((numberOfExercises*secondsDuration)/60);
+    }
+
     public Set<Exercise> getExercises() {
         return exercises;
     }

@@ -14,7 +14,7 @@
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="workoutDisplay">
-<h1 th:text="${workout.name}"></h1>
+    <p th:text="${workout.name}"></p>
     <p hidden th:each="exercise : ${exercises}" th:id="${exercises.indexOf(exercise)}" th:text="${exercise.name}"/>
     <p id="timer" class="timer"/>
 </div>

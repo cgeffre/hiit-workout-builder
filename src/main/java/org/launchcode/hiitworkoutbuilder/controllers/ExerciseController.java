@@ -1,19 +1,15 @@
 package org.launchcode.hiitworkoutbuilder.controllers;
 
 import org.launchcode.hiitworkoutbuilder.models.Exercise;
-import org.launchcode.hiitworkoutbuilder.models.Workout;
 import org.launchcode.hiitworkoutbuilder.models.data.ExerciseRepository;
 import org.launchcode.hiitworkoutbuilder.models.data.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
-import java.util.ArrayList;
 
 @Controller
 @RequestMapping("exercises")
@@ -78,7 +74,6 @@ public class ExerciseController {
         Exercise exercise = exerciseRepository.findById(exerciseId).orElse(new Exercise());
         exercise.removeExerciseFromWorkouts();
         exerciseRepository.delete(exercise);
-
         return "redirect:..";
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 @Controller
 @RequestMapping("select")
@@ -28,8 +29,13 @@ public class SelectWorkoutController {
     @GetMapping("view/{workoutId}")
     public String viewWorkout(Model model, @PathVariable int workoutId) {
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
+        ArrayList<Exercise> exerciseList = new ArrayList<>();
+        exerciseList.addAll(workout.getExercises());
+        ArrayList<Exercise> exercises = new ArrayList<>();
+        workout.addRestsToWorkout(exerciseList, workout, exercises);
         model.addAttribute("workout", workout);
         model.addAttribute("exercises", workout.getExercises());
+        model.addAttribute("totalDuration", workout.totalDurationOfWorkout(exercises, workout));
         return "select/view";
     }
 

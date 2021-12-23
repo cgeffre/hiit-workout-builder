@@ -8,6 +8,7 @@
 <h1 th:text="${workout.name}"></h1>
 <p><strong>Exercise Duration: </strong><th:block th:text="${workout.secondsDuration} + ' seconds per exercise'"/></p>
 <p><strong>Rest Period: </strong><th:block th:text="'After every ' + ${workout.restInterval} + ' exercise(s)'"/></p>
+<p><strong>Total Time: </strong><th:block th:text="${totalDuration} + ' minutes'"/></p>
 
 <p><strong>Exercises:</strong></p>
 
