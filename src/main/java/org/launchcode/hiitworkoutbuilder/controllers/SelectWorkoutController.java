@@ -2,6 +2,7 @@ package org.launchcode.hiitworkoutbuilder.controllers;
 
 import org.launchcode.hiitworkoutbuilder.models.Exercise;
 import org.launchcode.hiitworkoutbuilder.models.Workout;
+import org.launchcode.hiitworkoutbuilder.models.data.ExerciseRepository;
 import org.launchcode.hiitworkoutbuilder.models.data.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class SelectWorkoutController {
 
     @Autowired
     WorkoutRepository workoutRepository;
+
+    @Autowired
+    ExerciseRepository exerciseRepository;
 
     @GetMapping
     public String index(Model model) {
@@ -52,11 +56,10 @@ public class SelectWorkoutController {
     @GetMapping("edit/{workoutId}")
     public String editWorkout(Model model, @PathVariable int workoutId) {
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
-        ArrayList<Exercise> exercises = workout.exerciseRandomizer(workout);
         Workout updateWorkout = new Workout();
         model.addAttribute("workout", workout);
         model.addAttribute("updateWorkout", updateWorkout);
-        model.addAttribute("exercises", exercises);
+        model.addAttribute("exercises", exerciseRepository.findAll());
         return "select/edit";
     }
 
@@ -76,6 +79,24 @@ public class SelectWorkoutController {
         workout.setSecondsDuration(updateWorkout.getSecondsDuration());
         workoutRepository.save(workout);
         model.addAttribute("updateWorkout", updateWorkout);
+        return "redirect:..";
+    }
+
+    @GetMapping("delete/{workoutId}")
+    public String deleteWorkout(Model model, @PathVariable int workoutId) {
+        Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
+        ArrayList<Exercise> exercises = new ArrayList<>();
+        exercises.addAll(workout.getExercises());
+        model.addAttribute("totalDuration", workout.totalDurationOfWorkout(exercises, workout));
+        model.addAttribute("workout", workout);
+        model.addAttribute("exercises", exercises);
+        return "select/delete";
+    }
+
+    @PostMapping("delete/{workoutId}")
+    public String processDeleteWorkout(@PathVariable int workoutId) {
+        Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
+        workoutRepository.delete(workout);
         return "redirect:..";
     }
 }

@@ -7,14 +7,16 @@
 
 <h1>Select Workout</h1>
 
-<p>Choose which workout you would like to view or begin.</p>
+<p>Choose the workout you would like to view and begin, modify, or remove from the list.</p>
 
 <div class="workoutSelect">
-    <list>
-        <ul th:each="workout : ${workouts}">
-            <a th:href="@{/select/view/{id}(id=${workout.id})}" th:text="${workout.name}"></a>
-        </ul>
-    </list>
+    <table class="table">
+        <tr th:each="workout : ${workouts}">
+            <td><a th:href="@{/select/view/{id}(id=${workout.id})}" th:text="${workout.name}"/></td>
+            <td><a th:href="@{/select/edit/{id}(id=${workout.id})}" th:text="Edit"/></td>
+            <td><a th:href="@{/select/delete/{id}(id=${workout.id})}" th:text="Delete"/></td>
+        </tr>
+    </table>
 </div>
 
 </body>
