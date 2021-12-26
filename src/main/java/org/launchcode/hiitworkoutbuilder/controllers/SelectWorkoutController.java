@@ -85,8 +85,10 @@ public class SelectWorkoutController {
     @GetMapping("delete/{workoutId}")
     public String deleteWorkout(Model model, @PathVariable int workoutId) {
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
+        ArrayList<Exercise> exerciseList = new ArrayList<>();
+        exerciseList.addAll(workout.getExercises());
         ArrayList<Exercise> exercises = new ArrayList<>();
-        exercises.addAll(workout.getExercises());
+        workout.addRestsToWorkout(exerciseList, workout, exercises);
         model.addAttribute("totalDuration", workout.totalDurationOfWorkout(exercises, workout));
         model.addAttribute("workout", workout);
         model.addAttribute("exercises", exercises);
