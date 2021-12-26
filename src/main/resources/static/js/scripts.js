@@ -10,8 +10,32 @@ function validateNumbers() {
     return true;
 }
 
-// validates length of string values for edit exercise form
-function validateString() {
+// validates that empty values are not entered for numeric fields when editing a workout
+function validateUpdateNumbers() {
+    let text;
+    if ((document.updateWorkout.secondsDuration.value === "") || (document.updateWorkout.restInterval.value === "")) {
+        text = "Enter a number for all numeric fields"
+        document.getElementById("numError").innerHTML = text;
+        event.preventDefault();
+        return false;
+    }
+    return true;
+}
+
+// validates length of string values for edit workout form
+function validateWorkoutString() {
+    let text;
+    if (document.updateWorkout.name.value === "" || document.updateWorkout.name.value.length > 50) {
+        text = "Name must be between 1 and 50 characters";
+        document.getElementById("stringError").innerHTML = text;
+        event.preventDefault();
+        return false;
+    }
+    return true;
+}
+
+// validates length of string values for edit workout form
+function validateExerciseString() {
     let text;
     if (document.editExercise.name.value === "" || document.editExercise.name.value.length > 50) {
         text = "Name must be between 1 and 50 characters";
