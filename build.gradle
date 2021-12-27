@@ -29,7 +29,7 @@ test {
 jar {
 	manifest {
 		attributes(
-				'Main-Class': 'com.javatpoint.AppMain'
+				'Main-Class': 'org.launchcode.hiitworkoutbuilder.HiitWorkoutBuilderApplication'
 		)
 	}
 }
