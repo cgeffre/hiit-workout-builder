@@ -29,14 +29,7 @@ test {
 jar {
 	manifest {
 		attributes(
-				'Main-Class': 'org.launchcode.hiitworkoutbuilder.HiitWorkoutBuilderApplication'
+				'Main-Class': 'org.launchcode.hiitworkoutbuilder.HiitWorkoutBuilderApplication.Main'
 		)
 	}
 }
-
-task copyToLib(type: Copy) {
-	into "$buildDir/libs"
-	from(configurations.compile)
-}
-
-stage.dependsOn(copyToLib)
