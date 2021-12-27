@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body class="container body-content">
 <script th:inline="javascript">
-    window.onLoad = function () {
+    window.onload = function () {
     let duration = /*[[${workout.secondsDuration}]]*/;
     let display = document.querySelector('#timer');
     let exerciseNumber = /*[[${exercises.size()}]]*/;

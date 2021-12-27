@@ -11,7 +11,7 @@
     (typically 30-60 seconds), how often you would like to rest. Next, select the exercises you
     would like to include. The exercises will be randomized during the workout.</p>
 
-<form method="post" style="max-width:300px;" name="createWorkout">
+<form method="post" name="createWorkout">
 
     <div class="form-group">
         <label th:for="name">Workout Name</label>
@@ -35,8 +35,9 @@
         <p id="numError" class="error"/>
     </div>
 
-    <div>
-        <label th:for="exercises" class="form-group">Select Exercises</label>
+    <div style="max-width:600px;">
+        <label th:for="exercises">Select Exercises</label>
+        <br>
         <list>
             <ul th:each="exercise : ${exercises}">
                 <input type="checkbox" name="exercises" th:value="${exercise.id}"/>
@@ -45,7 +46,10 @@
         </list>
     </div>
 
-    <input type="submit" class="btn btn-primary" id="create" value="Create" onclick="validateNumbers();" />
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" id="create" value="Create" onclick="validateNumbers();" />
+    </div>
+
 </form>
 
 </body>

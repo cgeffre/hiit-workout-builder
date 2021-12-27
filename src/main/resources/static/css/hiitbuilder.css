@@ -27,3 +27,9 @@ td, th {
 .timer {
     color: #378805;
 }
+
+ul {
+    float: left;
+    overflow: hidden;
+    width: 50%;
+}

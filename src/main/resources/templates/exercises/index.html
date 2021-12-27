@@ -17,7 +17,7 @@
 
 <h2>List of Exercises</h2>
 
-<table class="table">
+<table class="table" style="max-width: 600px;">
     <tr th:each="exercise : ${exercises}">
         <td  th:text="${exercise.name}"/>
         <td><a th:href="@{/exercises/edit/{id}(id=${exercise.id})}" th:text="Edit"/></td>
