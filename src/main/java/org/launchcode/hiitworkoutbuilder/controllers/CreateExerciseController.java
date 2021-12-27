@@ -13,7 +13,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("exercises")
-public class ExerciseController {
+public class CreateExerciseController {
 
     @Autowired
     ExerciseRepository exerciseRepository;

@@ -10,6 +10,12 @@ td, th {
     padding: 10px;
 }
 
+ul {
+    float: left;
+    overflow: hidden;
+    width: 50%;
+}
+
 .error {
     color: #FF0000;
 }
@@ -26,10 +32,4 @@ td, th {
 
 .timer {
     color: #378805;
-}
-
-ul {
-    float: left;
-    overflow: hidden;
-    width: 50%;
 }
