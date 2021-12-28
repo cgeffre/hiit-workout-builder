@@ -14,8 +14,8 @@
 
 <div style="max-width:600px;">
     <list>
+        <ul th:unless="${exercises.size() > 0}">No exercises to display</ul>
         <ul th:each="exercise : ${exercises}" th:text="${exercise.name}"/>
-        </ul>
     </list>
 </div>
 
