@@ -8,18 +8,11 @@ This application allows you to create and be led through customized high-intensi
 
 SETUP
 
-Set your IDE to compile the application using Java Development Kit (JDK) 11. You may need to have Gradle installed if you are not compiling the application from IntelliJ IDEA or Spring Tool Suite. Fork and clone the Git repository to your IDE and then set up a local MySQL server. The server, schema, and user settings should be configured in MySQL Workbench to:
-- Port: 3306
-- Title: hiit-workout-builder
-- Username: hiit-workout-builder
-- Password: localadmin
-- Schema Privileges: Select All
+Simply visit https://hiit-builder.herokuapp.com/ to access the most recent web release of this application. Note that the application is currently open for free and public use, so please be respectful when adding exercises and workouts.
 
-For MySQL Workbench version 8.0, the username, password, and schema privileges can be set in Server > Users and Privileges. If you wish to use different database settings, you will need to update /src/main/resources/application.properties in the hiit-workout-builder source code to reflect your choices.
-
-You should now able to run the application from your IDE and access it on your local server.
+To use the application locally, set your IDE to compile the application using Java Development Kit (JDK) 11. You may need to have Gradle installed if you are not compiling the application from IntelliJ IDEA or Spring Tool Suite. Fork and clone the Git repository to your IDE and run the application. It is configured to an external SQL server, so you don't need to set up at a database locally unless you wish to create a private collection of exercises and workouts.
 
 
 TECHNICAL INFORMATION
 
-This is a Spring Boot web application with Gradle handling the build. It is primarily coded in Java with JavaScript functions handling certain features and the application follows a Model-View-Controller design pattern. The application uses Thymeleaf, HTML5, and CSS on the frontend and SQL with Hibernate to implement a persistent database.
+This is a Spring Boot web application with Gradle handling the build. It is primarily coded in Java with JavaScript functions handling certain features and the application follows a Model-View-Controller design pattern. The application uses Thymeleaf, HTML5, and CSS on the frontend and a ClearDB SQL server with Hibernate to implement a persistent database.
