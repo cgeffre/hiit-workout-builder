@@ -12,7 +12,6 @@ public class HiitWorkoutBuilderApplication extends SpringBootServletInitializer 
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		return builder.sources(HiitWorkoutBuilderApplication.class);
 	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(HiitWorkoutBuilderApplication.class, args);
 	}
