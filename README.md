@@ -8,9 +8,9 @@ This application allows users to create and be led through customized high-inten
 
 SETUP
 
-Simply visit https://hiit-builder.herokuapp.com/ to access the most recent web release of this application. Note that the application is currently open for free and public use, so anything you add will be accessible to other users.
+Visit https://hiit-builder.herokuapp.com/ to access the most recent web release of this application. Note that the application is currently open for free and public use, so anything you add will be accessible to other users.
 
-To use the application locally, set your IDE to compile the application using Java Development Kit (JDK) 11. You may need to have Gradle installed if you are not compiling the application from IntelliJ IDEA or Spring Tool Suite. Fork and clone the Git repository to your IDE and run the application. It is configured to an external SQL server, so you don't need to set up at a database locally unless you wish to create a private collection of exercises and workouts.
+To use the application locally, set your IDE to compile the application using Java Development Kit (JDK) 11. You may need to have Gradle installed if you are not compiling the application from IntelliJ IDEA or Spring Tool Suite. You will need to set up your own application.properties file with the database settings you wish to use. Fork and clone the Git repository to your IDE and run the application.
 
 
 TECHNICAL INFORMATION
