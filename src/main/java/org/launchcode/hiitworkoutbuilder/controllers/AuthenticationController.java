@@ -1,7 +1,11 @@
 package org.launchcode.hiitworkoutbuilder.controllers;
 
+import org.launchcode.hiitworkoutbuilder.models.Exercise;
 import org.launchcode.hiitworkoutbuilder.models.User;
+import org.launchcode.hiitworkoutbuilder.models.Workout;
+import org.launchcode.hiitworkoutbuilder.models.data.ExerciseRepository;
 import org.launchcode.hiitworkoutbuilder.models.data.UserRepository;
+import org.launchcode.hiitworkoutbuilder.models.data.WorkoutRepository;
 import org.launchcode.hiitworkoutbuilder.models.dto.LoginFormDTO;
 import org.launchcode.hiitworkoutbuilder.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +26,12 @@ public class AuthenticationController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    ExerciseRepository exerciseRepository;
+
+    @Autowired
+    WorkoutRepository workoutRepository;
 
     private static final String userSessionKey = "user";
 
@@ -80,6 +90,18 @@ public class AuthenticationController {
         User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
+
+        User defaultExercisesAndWorkout = userRepository.findById(1).orElse(new User());
+        for (Exercise exercise : defaultExercisesAndWorkout.getExercises()) {
+            exercise.setUser(newUser);
+            exerciseRepository.save(exercise);
+            newUser.addExercise(exercise);
+        }
+        for (Workout workout : defaultExercisesAndWorkout.getWorkouts()) {
+            workout.setUser(newUser);
+            workoutRepository.save(workout);
+            newUser.addWorkout(workout);
+        }
 
         return "redirect:";
     }
