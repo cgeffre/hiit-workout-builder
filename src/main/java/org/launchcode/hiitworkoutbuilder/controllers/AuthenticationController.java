@@ -99,7 +99,7 @@ public class AuthenticationController {
             newUser.addExercise(newExercise);
         }
 
-        return "redirect:";
+        return "redirect:/";
     }
 
     @GetMapping("/login")
@@ -137,7 +137,7 @@ public class AuthenticationController {
 
         setUserInSession(request.getSession(), theUser);
 
-        return "redirect:";
+        return "redirect:/";
     }
 
     @GetMapping("/logout")
