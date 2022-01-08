@@ -93,14 +93,16 @@ public class AuthenticationController {
 
         User defaultExercisesAndWorkout = userRepository.findById(1).orElse(new User());
         for (Exercise exercise : defaultExercisesAndWorkout.getExercises()) {
-            exercise.setUser(newUser);
-            exerciseRepository.save(exercise);
-            newUser.addExercise(exercise);
+            Exercise newExercise = new Exercise(exercise.getName());
+            newExercise.setUser(newUser);
+            exerciseRepository.save(newExercise);
+            newUser.addExercise(newExercise);
         }
         for (Workout workout : defaultExercisesAndWorkout.getWorkouts()) {
-            workout.setUser(newUser);
-            workoutRepository.save(workout);
-            newUser.addWorkout(workout);
+            Workout newWorkout = new Workout(workout.getName(), newUser.getExercises(), workout.getSecondsDuration(), workout.getRestInterval());
+            newWorkout.setUser(newUser);
+            workoutRepository.save(newWorkout);
+            newUser.addWorkout(newWorkout);
         }
 
         return "redirect:";

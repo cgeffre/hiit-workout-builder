@@ -4,10 +4,16 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 @Entity
 public class Workout extends AbstractEntity {
+
+    @NotBlank(message="Name is required")
+    @Size(max=50, message="Name must be less than 50 characters")
+    private String name;
 
     @ManyToMany
     @Valid
@@ -26,8 +32,9 @@ public class Workout extends AbstractEntity {
 
     public Workout() {}
 
-    public Workout(Set someExercises, int someDuration, int someInterval) {
+    public Workout(String aName, Set someExercises, int someDuration, int someInterval) {
         super();
+        this.name = aName;
         this.exercises = someExercises;
         this.secondsDuration = someDuration;
         this.restInterval = someInterval;
@@ -56,6 +63,19 @@ public class Workout extends AbstractEntity {
         int numberOfExercises = exercises.size();
         int secondsDuration = aWorkout.getSecondsDuration();
         return Math.round((numberOfExercises*secondsDuration)/60);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     public Set<Exercise> getExercises() {

@@ -2,11 +2,17 @@ package org.launchcode.hiitworkoutbuilder.models;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Exercise extends AbstractEntity {
+
+    @NotBlank(message="Name is required")
+    @Size(max=50, message="Name must be less than 50 characters")
+    private String name;
 
     @ManyToMany(mappedBy="exercises")
     @Valid
@@ -16,6 +22,10 @@ public class Exercise extends AbstractEntity {
     @JoinColumn(name="user_id")
     private User user;
 
+    public Exercise(String name) {
+        this.name = name;
+    }
+
     public Exercise() {}
 
     @PreRemove
@@ -23,6 +33,19 @@ public class Exercise extends AbstractEntity {
         for (Workout workout : workouts) {
             workout.getExercises().remove(this);
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     public User getUser() {
