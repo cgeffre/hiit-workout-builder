@@ -7,7 +7,9 @@
 
 <h1>Select Workout</h1>
 
-<p>Choose the workout you would like to view and begin, modify, or remove from the list.</p>
+<p>Choose the workout you would like to view and begin, modify, or remove.</p>
+
+<p class="error" th:unless="${workouts.size() > 0}">No workouts to display; build a workout to continue</p>
 
 <div class="workoutSelect">
     <table class="table" style="max-width:600px;">
