@@ -2,9 +2,7 @@ package org.launchcode.hiitworkoutbuilder.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -40,4 +38,9 @@ public class User {
     public int getId() {
         return id;
     }
+
+    public String getPwHash() {
+        return pwHash;
+    }
+
 }
