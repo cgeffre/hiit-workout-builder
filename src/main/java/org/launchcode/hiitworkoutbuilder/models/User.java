@@ -3,10 +3,21 @@ package org.launchcode.hiitworkoutbuilder.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpSession;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
+
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private Set<Exercise> exercises = new HashSet<>();
+
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private Set<Workout> workouts = new HashSet<>();
 
     @Id
     @GeneratedValue
@@ -43,4 +54,27 @@ public class User {
         return pwHash;
     }
 
+    public Set<Exercise> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(Set<Exercise> exercises) {
+        this.exercises = exercises;
+    }
+
+    public void addExercise(Exercise exercise) {
+        this.exercises.add(exercise);
+    }
+
+    public Set<Workout> getWorkouts() {
+        return workouts;
+    }
+
+    public void setWorkouts(Set<Workout> workouts) {
+        this.workouts = workouts;
+    }
+
+    public void addWorkout(Workout workout) {
+        this.workouts.add(workout);
+    }
 }

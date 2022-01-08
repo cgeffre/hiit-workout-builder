@@ -1,8 +1,10 @@
 package org.launchcode.hiitworkoutbuilder.controllers;
 
 import org.launchcode.hiitworkoutbuilder.models.Exercise;
+import org.launchcode.hiitworkoutbuilder.models.User;
 import org.launchcode.hiitworkoutbuilder.models.Workout;
 import org.launchcode.hiitworkoutbuilder.models.data.ExerciseRepository;
+import org.launchcode.hiitworkoutbuilder.models.data.UserRepository;
 import org.launchcode.hiitworkoutbuilder.models.data.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
 
@@ -23,9 +26,15 @@ public class SelectWorkoutController {
     @Autowired
     ExerciseRepository exerciseRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping
-    public String index(Model model) {
-        model.addAttribute("workouts", workoutRepository.findAll());
+    public String index(Model model, HttpSession session) {
+        String userSessionKey = "user";
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        User user = userRepository.findById(userId).orElse(new User());
+        model.addAttribute("workouts", user.getWorkouts());
         return "select/index";
     }
 
@@ -54,12 +63,15 @@ public class SelectWorkoutController {
     }
 
     @GetMapping("edit/{workoutId}")
-    public String editWorkout(Model model, @PathVariable int workoutId) {
+    public String editWorkout(Model model, @PathVariable int workoutId, HttpSession session) {
+        String userSessionKey = "user";
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        User user = userRepository.findById(userId).orElse(new User());
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
         Workout updateWorkout = new Workout();
         model.addAttribute("workout", workout);
         model.addAttribute("updateWorkout", updateWorkout);
-        model.addAttribute("exercises", exerciseRepository.findAll());
+        model.addAttribute("exercises", user.getExercises());
         return "select/edit";
     }
 

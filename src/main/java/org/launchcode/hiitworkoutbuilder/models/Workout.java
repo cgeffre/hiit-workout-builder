@@ -13,6 +13,10 @@ public class Workout extends AbstractEntity {
     @Valid
     private Set<Exercise> exercises = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+
     @Min(value=1, message="Number must be positive")
     @Max(value=99, message="Number must be less than 100 seconds")
     private int secondsDuration;
@@ -78,4 +82,7 @@ public class Workout extends AbstractEntity {
         this.restInterval = restInterval;
     }
 
+    public User getUser() {return user;}
+
+    public void setUser(User user) {this.user = user;}
 }
