@@ -39,8 +39,14 @@ public class SelectWorkoutController {
     }
 
     @GetMapping("view/{workoutId}")
-    public String viewWorkout(Model model, @PathVariable int workoutId) {
+    public String viewWorkout(Model model, @PathVariable int workoutId, HttpSession session) {
+        String userSessionKey = "user";
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        User user = userRepository.findById(userId).orElse(new User());
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
+        if (workout.getUser().getId() != user.getId()) {
+            return "redirect:..";
+        }
         ArrayList<Exercise> exerciseList = new ArrayList<>();
         exerciseList.addAll(workout.getExercises());
         ArrayList<Exercise> exercises = new ArrayList<>();
@@ -52,8 +58,14 @@ public class SelectWorkoutController {
     }
 
     @GetMapping("workout/{workoutId}")
-    public String doWorkout(Model model, @PathVariable int workoutId) {
+    public String doWorkout(Model model, @PathVariable int workoutId, HttpSession session) {
+        String userSessionKey = "user";
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        User user = userRepository.findById(userId).orElse(new User());
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
+        if (workout.getUser().getId() != user.getId()) {
+            return "redirect..";
+        }
         ArrayList<Exercise> exerciseList = workout.exerciseRandomizer(workout);
         ArrayList<Exercise> exercises = new ArrayList<>();
         workout.addRestsToWorkout(exerciseList, workout, exercises);
@@ -68,6 +80,9 @@ public class SelectWorkoutController {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         User user = userRepository.findById(userId).orElse(new User());
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
+        if (workout.getUser().getId() != user.getId()) {
+            return "redirect..";
+        }
         Workout updateWorkout = new Workout();
         model.addAttribute("workout", workout);
         model.addAttribute("updateWorkout", updateWorkout);
@@ -95,8 +110,14 @@ public class SelectWorkoutController {
     }
 
     @GetMapping("delete/{workoutId}")
-    public String deleteWorkout(Model model, @PathVariable int workoutId) {
+    public String deleteWorkout(Model model, @PathVariable int workoutId, HttpSession session) {
+        String userSessionKey = "user";
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        User user = userRepository.findById(userId).orElse(new User());
         Workout workout = workoutRepository.findById(workoutId).orElse(new Workout());
+        if (workout.getUser().getId() != user.getId()) {
+            return "redirect..";
+        }
         ArrayList<Exercise> exerciseList = new ArrayList<>();
         exerciseList.addAll(workout.getExercises());
         ArrayList<Exercise> exercises = new ArrayList<>();

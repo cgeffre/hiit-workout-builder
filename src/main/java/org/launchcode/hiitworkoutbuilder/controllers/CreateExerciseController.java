@@ -4,7 +4,6 @@ import org.launchcode.hiitworkoutbuilder.models.Exercise;
 import org.launchcode.hiitworkoutbuilder.models.User;
 import org.launchcode.hiitworkoutbuilder.models.data.ExerciseRepository;
 import org.launchcode.hiitworkoutbuilder.models.data.UserRepository;
-import org.launchcode.hiitworkoutbuilder.models.data.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.*;
 
 @Controller
 @RequestMapping("exercises")
@@ -24,14 +24,13 @@ public class CreateExerciseController {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    WorkoutRepository workoutRepository;
-
     @GetMapping
     public String index(Model model, HttpSession session) {
         String userSessionKey = "user";
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         User user = userRepository.findById(userId).orElse(new User());
+        ArrayList<Exercise> exercises = new ArrayList<>();
+        exercises.addAll(user.getExercises());
         model.addAttribute("exercises", user.getExercises());
         model.addAttribute(new Exercise());
         return "exercises/index";
@@ -55,8 +54,14 @@ public class CreateExerciseController {
     }
 
     @GetMapping("edit/{exerciseId}")
-    public String editExercise(Model model, @PathVariable int exerciseId) {
+    public String editExercise(Model model, @PathVariable int exerciseId, HttpSession session) {
+        String userSessionKey = "user";
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        User user = userRepository.findById(userId).orElse(new User());
         Exercise exercise = exerciseRepository.findById(exerciseId).orElse(new Exercise());
+        if (exercise.getUser().getId() != user.getId()) {
+            return "redirect:..";
+        }
         model.addAttribute("exercise", exercise);
         return "exercises/edit";
     }
@@ -81,8 +86,14 @@ public class CreateExerciseController {
     }
 
     @GetMapping("delete/{exerciseId}")
-    public String deleteExercise(Model model, @PathVariable int exerciseId) {
+    public String deleteExercise(Model model, @PathVariable int exerciseId, HttpSession session) {
+        String userSessionKey = "user";
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        User user = userRepository.findById(userId).orElse(new User());
         Exercise exercise = exerciseRepository.findById(exerciseId).orElse(new Exercise());
+        if (exercise.getUser().getId() != user.getId()) {
+            return "redirect:..";
+        }
         model.addAttribute("exercise", exercise);
         return "exercises/delete";
     }

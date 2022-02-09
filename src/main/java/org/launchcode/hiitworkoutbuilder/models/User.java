@@ -3,7 +3,6 @@ package org.launchcode.hiitworkoutbuilder.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import javax.servlet.http.HttpSession;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;

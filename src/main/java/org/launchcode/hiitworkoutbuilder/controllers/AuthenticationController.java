@@ -2,10 +2,8 @@ package org.launchcode.hiitworkoutbuilder.controllers;
 
 import org.launchcode.hiitworkoutbuilder.models.Exercise;
 import org.launchcode.hiitworkoutbuilder.models.User;
-import org.launchcode.hiitworkoutbuilder.models.Workout;
 import org.launchcode.hiitworkoutbuilder.models.data.ExerciseRepository;
 import org.launchcode.hiitworkoutbuilder.models.data.UserRepository;
-import org.launchcode.hiitworkoutbuilder.models.data.WorkoutRepository;
 import org.launchcode.hiitworkoutbuilder.models.dto.LoginFormDTO;
 import org.launchcode.hiitworkoutbuilder.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +27,6 @@ public class AuthenticationController {
 
     @Autowired
     ExerciseRepository exerciseRepository;
-
-    @Autowired
-    WorkoutRepository workoutRepository;
 
     private static final String userSessionKey = "user";
 
