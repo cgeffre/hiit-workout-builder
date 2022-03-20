@@ -1,5 +1,7 @@
 package org.launchcode.hiitworkoutbuilder.models;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
@@ -12,10 +14,12 @@ public class User {
 
     @OneToMany
     @JoinColumn(name="user_id")
+    @Cascade(CascadeType.ALL)
     private Set<Exercise> exercises = new HashSet<>();
 
     @OneToMany
     @JoinColumn(name="user_id")
+    @Cascade(CascadeType.ALL)
     private Set<Workout> workouts = new HashSet<>();
 
     @Id
@@ -75,5 +79,9 @@ public class User {
 
     public void addWorkout(Workout workout) {
         this.workouts.add(workout);
+    }
+
+    public void updatePassword(String newPassword) {
+        this.pwHash = encoder.encode(newPassword);
     }
 }

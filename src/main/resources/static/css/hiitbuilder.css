@@ -34,3 +34,7 @@ ul {
 .timer {
     color: #378805;
 }
+
+.success {
+    color: green;
+}

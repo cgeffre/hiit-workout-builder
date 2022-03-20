@@ -8,7 +8,7 @@
     <link th:href="@{/css/hiitbuilder.css}" rel="stylesheet" />
     <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
 
-    <title th:text="'HIIT Workout Builder' + ${title == null ? '' : ' :: ' + title}">HIIT Workout Builder</title>
+    <title>HIIT Workout Builder</title>
 </head>
 
 <body>
@@ -23,7 +23,8 @@
                 <li><a th:href="@{/exercises}">Add Exercises</a></li>
                 <li><a th:href="@{/create}">Create Workout</a></li>
                 <li><a th:href="@{/select}">Select Workout</a></li>
-                <li style="float:right;"><a th:href="@{/logout}">Sign Out</a></li>
+                <li><a th:href="@{/account}">Account</a></li>
+                <li><a th:href="@{/logout}">Sign Out</a></li>
             </ul>
         </div>
     </div>

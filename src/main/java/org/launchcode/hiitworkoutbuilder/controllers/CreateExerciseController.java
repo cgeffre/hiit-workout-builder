@@ -50,6 +50,7 @@ public class CreateExerciseController {
         newExercise.setUser(user);
         exerciseRepository.save(newExercise);
         model.addAttribute("exercises", user.getExercises());
+        model.addAttribute("exerciseAdded", "Your exercise has been added!");
         return "exercises/index";
     }
 
